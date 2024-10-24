@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡🅹🆄🅸🅲🆈🅵🅻🆄🆇</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+  --primary-color: #ffa07a; /* Orange */
+  --secondary-color-1: #ffd700; /* Golden Yellow */
+  --secondary-color-2: #ff69b4; /* Pastel Pink */
+  --secondary-color-3: #ff8c00; /* Coral */
+  --background-color: #000;
+  --text-color: #fff;
+  --gradient-color: linear-gradient(to bottom, #ffa07a, #ffd700, #ff69b4, #ff8c00);
+  --neon-orange: #ffa07a;
+  --neon-yellow: #ffd700;
+  --neon-pink: #ff69b4;
+  --neon-coral: #ff8c00;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'VT323', monospace;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+.cyber-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(transparent 0%, rgba(0,0,0,0.8) 100%),
+    linear-gradient(90deg, rgba(255,113,206,0.1) 0%, transparent 100%);
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--gradient-color);
+  border: 2px solid var(--neon-orange);
+  border-radius: 15px;
+  box-shadow: 0 0 20px var(--neon-orange);
+}
+
+        h1 {
+            font-size: 4em;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--neon-blue);
+            text-shadow: 
+                0 0 5px var(--neon-blue),
+                0 0 10px var(--neon-blue),
+                0 0 20px var(--neon-blue);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+            to { text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); }
+        }
+
+        .input-container {
+            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        select, input, button {
+            width: 80%;
+            padding: 15px;
+            font-size: 1.2em;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid var(--neon-purple);
+            border-radius: 8px;
+            color: var(--cyber-yellow);
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        button {
+            background: var(--neon-purple);
+            color: #000;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--neon-green);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #imageContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .image-card {
+            position: relative;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--neon-blue);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: var(--neon-pink);
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--neon-blue);
+            transform: scale(1.02);
+        }
+
+        #loading, #error {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        #loading {
+            color: var(--cyber-yellow);
+        }
+
+        #error {
+            color: var(--cyber-red);
+            border: 1px solid var(--cyber-red);
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .pulse {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="container">
+        <h1>⚡ﾌㄩ丨匚ㄚ千ㄥㄩ乂⚡</h1>
+        <div class="input-container">
+            <select id="backendSelect">
+                <option value="together">𐌕ꝊᏵ𐌄𐌕𐋅𐌄尺 ▞▚ █</option>
+                <option value="replicate">尺乇卩ㄥ丨匚卂ｲ乇 ▞▚ █</option>
+            </select>
+            <input type="text" id="apiKeyInput" placeholder="Enter your API key">
+            <select id="modelSelect"></select>
+            <input type="text" id="promptInput" placeholder="Enter your creative prompt...">
+            <button onclick="generateImages()" id="generateBtn">G E ᑎ E ᖇ ᗩ T E  👹</button>
+        </div>
+        <div id="loading" class="pulse" style="display: none;">Generating your masterpiece...</div>
+        <div id="error"></div>
+        <div id="imageContainer"></div>
+    </div>
+
+    <script>
+        const backends = {
+            together: {
+                apiUrl: 'https://api.together.xyz/v1/images/generations',
+                models: [
+                    { name: '千ㄥㄩ乂．１－丂匚卄几乇ㄥㄥ', value: 'black-forest-labs/FLUX.1-schnell' },
+                    { name: '🔥千ㄥㄩ乂．１．１－卩尺ㄖ🔥', value: 'black-forest-labs/FLUX.1.1-pro' },
+                    { name: '千ㄥㄩ乂．１－卩尺ㄖ', value: 'black-forest-labs/FLUX.1-pro' },
+                    
+                ]
+            },
+            replicate: {
+                apiUrl: 'https://api.replicate.com/v1/predictions',
+                models: [
+                    { name: 'Stable Diffusion XL', value: 'stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b' },
+                    { name: 'Stable Diffusion v1.5', value: 'stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf' }
+                ]
+            }
+        };
+
+        const backendSelect = document.getElementById('backendSelect');
+        const modelSelect = document.getElementById('modelSelect');
+
+        backendSelect.addEventListener('change', updateModelOptions);
+
+        function updateModelOptions() {
+            const selectedBackend = backendSelect.value;
+            modelSelect.innerHTML = '';
+            backends[selectedBackend].models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.value;
+                option.textContent = model.name;
+                modelSelect.appendChild(option);
+            });
+        }
+
+        updateModelOptions();
+
+        async function generateImages() {
+            const apiKey = document.getElementById('apiKeyInput').value;
+            const prompt = document.getElementById('promptInput').value;
+            const selectedBackend = backendSelect.value;
+            const selectedModel = modelSelect.value;
+            const loading = document.getElementById('loading');
+            const container = document.getElementById('imageContainer');
+            const error = document.getElementById('error');
+            const generateBtn = document.getElementById('generateBtn');
+
+            if (!apiKey || !prompt) {
+                error.style.display = 'block';
+                error.textContent = '🚨 Please enter both API key and prompt! 🚨';
+                return;
+            }
+
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            container.innerHTML = '';
+            generateBtn.disabled = true;
+
+            try {
+                let images;
+                if (selectedBackend === 'together') {
+                    images = await generateTogetherImages(apiKey, selectedModel, prompt);
+                } else if (selectedBackend === 'replicate') {
+                    images = await generateReplicateImages(apiKey, selectedModel, prompt);
+                }
+
+                displayImages(images);
+            } catch (err) {
+                console.error('Error:', err);
+                error.style.display = 'block';
+                error.textContent = `🚨 Error: ${err.message} 🚨`;
+            } finally {
+                loading.style.display = 'none';
+                generateBtn.disabled = false;
+            }
+        }
+
+        async function generateTogetherImages(apiKey, model, prompt) {
+            const response = await fetch(backends.together.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: model,
+                    prompt: prompt,
+                    steps: 10,
+                    n: 4
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            return data.data.map(item => item.url);
+        }
+
+        async function generateReplicateImages(apiKey, model, prompt) {
+            const response = await fetch(backends.replicate.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Token ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    version: model,
+                    input: { prompt: prompt }
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            
+            // Poll for results
+            let result;
+            do {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                const resultResponse = await fetch(data.urls.get, {
+                    headers: { 'Authorization': `Token ${apiKey}` }
+                });
+                result = await resultResponse.json();
+            } while (result.status === 'processing');
+
+            if (result.status === 'succeeded') {
+                return result.output;
+            } else {
+                throw new Error('Image generation failed');
+            }
+        }
+
+        function displayImages(images) {
+            const container = document.getElementById('imageContainer');
+            container.innerHTML = '';
+            
+            images.forEach((imgUrl, index) => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.alt = `Generated image ${index + 1}`;
+                
+                const downloadBtn = document.createElement('a');
+                downloadBtn.href = imgUrl;
+                downloadBtn.download = `generated-image-${index + 1}.png`;
+                downloadBtn.className = 'download-btn';
+                downloadBtn.innerText = '⬇ DOWNLOAD';
+                
+                card.appendChild(img);
+                card.appendChild(downloadBtn);
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
